@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @box.descripcion %>
+</p>
+
+<p>
+  <strong>Tamano:</strong>
+  <%= @box.tamano %>
+</p>
+
+<%= link_to 'Modificar', edit_box_path(@box) %> |
+<%= link_to 'Volver', boxes_path %>

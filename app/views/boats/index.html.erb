@@ -1,0 +1,36 @@
+    <p id="notice"><%= notice %></p>
+    <div class= "container-fluid text-center">
+    <h1>Lanchas</h1>
+
+
+    <table class="table table-hover">
+     
+      <thead>
+        <tr>
+          <th scope="col">Cliente</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Matricula</th>
+          <th scope="col">Motor</th>
+          <th colspan="3"><center> Acciones Posible</center></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @boats.each do |boat| %>
+          <tr>
+            <td><%= boat.client.nombre_completo%></td>
+            <td><%= boat.nombre %></td>
+            <td><%= boat.matricula %></td>
+            <td><%= boat.motor %></td>
+            <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Mostrar', boat %></td>
+            <td><button type="button" class="btn btn-outline-success"><%= link_to 'Modificar', edit_boat_path(boat) %></td>
+            <td><button type="button" class="btn btn-outline-danger"><%= link_to 'Eliminar', boat, method: :delete, data: { confirm: 'Desea Eliminar esta lancha?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+     
+    </table>
+    </div>
+
+
+<%= link_to 'Agregar Lancha', new_boat_path %>

@@ -1,0 +1,49 @@
+<%= form_with(model: client, local: true) do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> 
+<div class= "container">
+   <div class="form-group col-md-6">
+    <%= form.label :NOMBRE %>
+    <%= form.text_field :nombre,  id: :client_nombre, class:"form-control", placeholder:"Tu nombre" %>
+  </div>
+  
+
+  <div class="form-group col-md-6" >
+    <%= form.label :apellido %>
+    <%= form.text_field :apellido,  id: :client_apellido, class:"form-control", placeholder:"Tu apellido" %>
+  </div>
+
+  <div class="form-group col-md-6">    
+    <%= form.label :dni %>
+    <%= form.text_field :dni, id: :client_dni, class:"form-control", placeholder:"Tu número de documento" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :Teléfono %>
+    <%= form.text_field :TelǸfono, id: :client_TelǸfono, class:"form-control", placeholder:"Tu telefono fijo" %>
+  </div>
+
+  <div class="form-group col-md-6"> 
+    <%= form.label :celular %>
+    <%= form.text_field :celular, id: :client_celular, class:"form-control", placeholder:"Tu número de celular" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :estado %>
+    <%= form.text_field :estado, id: :client_estado, class:"form-control", placeholder:"Tu estado" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.submit"Guardar", class: "btn btn-primary"  %>
+  </div>
+</div>
+ <% end %>

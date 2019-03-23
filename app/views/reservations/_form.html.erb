@@ -1,0 +1,47 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-md-6">
+    <%= form.label :Cliente%>
+    <%= form.select :client_id, Client.all.map{|c| [c.nombre, c.id] }, id: :reservation_client_id %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :Box%>
+    <%= form.select :box_id, Box.all.map{|b| [b.descripcion, b.id] }, id: :reservation_box_id %>
+  </div>
+  <div class="form-group col-md-6">
+    <%= form.label :Lancha %>
+    <%= form.select :boat_id, Boat.all.map{|b| [b.nombre, b.id] }, id: :reservation_boat_id %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :fecha_desde %>
+    <%= form.date_select :fecha_desde, id: :reservation_fecha_desde %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :fecha_hasta %>
+    <%= form.date_select :fecha_hasta, id: :reservation_fecha_hasta %>
+  </div>
+
+  <div class="form-group col-md-6">  
+    <%= form.label :estado %>
+    <%= form.number_field :estado, id: :reservation_estado %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit 'Guardar', class: "btn btn-primary"  %>
+  </div>
+<% end %>
